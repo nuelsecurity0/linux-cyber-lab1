@@ -1,0 +1,17 @@
+## Linux Cyber Lab - regras de auditoria (lab 07)
+## Instalado automaticamente em /etc/audit/rules.d/cyberlab.rules
+##
+## Chaves (use com: sudo ausearch -k <chave>)
+##   cyberlab_identidade -> /etc/passwd e /etc/shadow
+##   cyberlab_sudo       -> /etc/sudoers e /etc/sudoers.d/
+##   cyberlab_cron       -> /etc/cron.d/
+##   cyberlab_scripts    -> script executado como root pelo cron
+##   cyberlab_ssh        -> chaves SSH do root
+
+-w /etc/passwd -p wa -k cyberlab_identidade
+-w /etc/shadow -p wa -k cyberlab_identidade
+-w /etc/sudoers -p wa -k cyberlab_sudo
+-w /etc/sudoers.d/ -p wa -k cyberlab_sudo
+-w /etc/cron.d/ -p wa -k cyberlab_cron
+-w /opt/cyberlab/scripts/ -p wa -k cyberlab_scripts
+-w /root/.ssh/ -p wa -k cyberlab_ssh
